@@ -1,30 +1,15 @@
-from feistel import FeistelCipher
+from feistel import FeistelCipher, FeistelNetwork
 
 
-KEYS = {b'key': 0.5, b'key2': 0.5}  # these are the keys to the round function respectively, left side key right side balance point
+KEYS = [b'key', b'key2', b'lol', b'ok', b'key2']  # these are the keys to the round function respectively
 
 
 def main():
-	# this is how the network will work, just with more than 1 round
-	b = FeistelCipher(b'abcd', b'key')
-	print('data->', b.data)
-	b.calculate()
-	b.sawp_sides()
-	print('encrypted->', b.data)
-	b.calculate()
-	b.sawp_sides()
-	print('decrypted->', b.data)
-
-	print()
-
-	b = FeistelCipher(b'abcde', b'key')
-	print('data->', b.data)
-	b.calculate()
-	b.sawp_sides()
-	print('encrypted->', b.data)
-	b.calculate()
-	b.sawp_sides()
-	print('decrypted->', b.data)
+	network = FeistelNetwork(b'Hello Eve. Meet me under the bridge at 10PM.', KEYS)
+	network.encrypt()
+	print('encrypted->', network.data)
+	network.decrypt()
+	print('decrypted->', network.data)
 
 
 if __name__ == '__main__':
