@@ -6,4 +6,4 @@ Code not done yet(See TODO list).
 ## TODO
 - [x] Make the cipher itself
 - [x] Make the network
-- [x] Make exception and errors
+- [ ] Make exception and errors
